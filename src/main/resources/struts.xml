@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<!-- 开发模式 -->
+	<constant name="struts.devMode" value="true"></constant>
+	<!--strict-method-invocation关闭屏蔽update\find等方法  -->
+	<package name="default" extends="struts-default" strict-method-invocation="false">
+		<action name="*_*" class="com.woniu.web.action.{1}Action" method="{2}">
+			<result name="find" type="redirectAction" >{1}_find</result>
+			<result name="findUI" type="dispatcher">/findUI.jsp</result>
+		</action>
+	</package>
+</struts>
