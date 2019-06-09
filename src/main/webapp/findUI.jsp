@@ -11,18 +11,21 @@
 		text-decoration: none;
 		cursor: pointer;
 	}
+	
 </style>
 <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
+	<a href="saveUI.jsp">添加用户</a>
 	
 	<table class="table">
 		<tr>
-			<td>id</td>
-			<td>name</td>
-			<td>pwd</td>
-			<td>date</td>
+			<td>编号</td>
+			<td>姓名</td>
+			<td>密码</td>
+			<td>日期</td>
+			<td>编辑</td>
+			<td>删除</td>
 		</tr>
 		<c:forEach items="${page.list }" var="u">
 			<tr>
@@ -30,6 +33,8 @@
 				<td>${u.uname}</td>
 				<td>${u.upwd}</td>
 				<td>${u.udate}</td>
+				<td><a href="User_editUI?uid=${u.uid}">编辑</a></td>
+				<td><a href="User_delete?uid=${u.uid}">删除</a></td>
 			</tr>
 		</c:forEach>
 		<tr>

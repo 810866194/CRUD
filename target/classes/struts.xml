@@ -7,9 +7,15 @@
 	<constant name="struts.devMode" value="true"></constant>
 	<!--strict-method-invocation关闭屏蔽update\find等方法  -->
 	<package name="default" extends="struts-default" strict-method-invocation="false">
+		<interceptors>
+			<interceptor name="save" class="com.woniu.web.interceptor.SaveInterceptor"></interceptor>
+		</interceptors>
 		<action name="*_*" class="com.woniu.web.action.{1}Action" method="{2}">
+			<interceptor-ref name="save"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="find" type="redirectAction" >{1}_find</result>
 			<result name="findUI" type="dispatcher">/findUI.jsp</result>
+			<result name="editUI" type="dispatcher">/editUI.jsp</result>
 		</action>
 	</package>
 </struts>

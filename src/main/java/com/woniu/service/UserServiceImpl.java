@@ -11,19 +11,19 @@ public class UserServiceImpl implements IUserService {
 	private IUserDao dao = new UserDaoImpl();
 	@Override
 	public void save(User user) {
-		// TODO Auto-generated method stub
+		dao.save(user);
 
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
+		dao.delete(id);
 
 	}
 
 	@Override
 	public void update(User user) {
-		// TODO Auto-generated method stub
+		dao.update(user);
 
 	}
 
@@ -34,9 +34,8 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public User find(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public User find(Integer id) {	
+		return dao.find(id);
 	}
 
 	@Override
@@ -48,5 +47,6 @@ public class UserServiceImpl implements IUserService {
 		page.setList(list2);
 		return page;
 	}
+
 
 }

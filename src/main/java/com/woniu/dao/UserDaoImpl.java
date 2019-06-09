@@ -9,20 +9,23 @@ public class UserDaoImpl implements IUserDao {
 	BaseDAO<User> b = new BaseDAO<User>();
 	@Override
 	public void save(User user) {
-		// TODO Auto-generated method stub
-
+		String sql = "insert into user values(null,?,?,?)";
+		Object[] obj = {user.getUname(),user.getUpwd(),user.getUdate()};
+		b.update(sql, obj);
 	}
 
 	@Override
 	public void delete(Integer id) {
-		// TODO Auto-generated method stub
-
+		String sql = "delete from user where uid=?";
+		Object[] obj = {id};
+		b.update(sql, obj);
 	}
 
 	@Override
 	public void update(User user) {
-		// TODO Auto-generated method stub
-
+		String sql = "update user set uname=?,upwd=?,udate=? where uid=?";
+		Object[] obj = {user.getUname(),user.getUpwd(),user.getUdate(),user.getUid()};
+		b.update(sql, obj);
 	}
 
 	@Override
@@ -34,8 +37,10 @@ public class UserDaoImpl implements IUserDao {
 
 	@Override
 	public User find(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from user where uid=?";
+		Object[] obj = {id};
+		List<User> list = b.select(sql, obj, User.class);
+		return list.size()==0?null:list.get(0);
 	}
 
 	@Override

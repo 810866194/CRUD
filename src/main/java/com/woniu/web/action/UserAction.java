@@ -18,6 +18,27 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		ServletActionContext.getRequest().setAttribute("page", page);
 		return "findUI";
 	}
+	public String editUI() { 
+		ServletActionContext.getRequest().setAttribute("user", service.find(user.getUid()));
+		return "editUI";
+	}
+	public String edit() { 
+		service.update(user);
+		return "find";
+	}
+	public String save() { 
+		service.save(user);
+		return "find";
+	}
+	public String delete() { 
+		service.delete(user.getUid());
+		return "find";
+	}
+	
+	
+	
+	
+	
 	
 	public void setP(int p) {
 		this.p = p;
